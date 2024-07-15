@@ -3,7 +3,6 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Menu } from "~/lib/icons/Menu";
 import { Button } from "~/components/ui/button";
 import * as React from "react";
-import { CustomThemeToggle } from "~/components/CustomThemeToggle";
 
 export default function AppLayout() {
   return (
@@ -13,21 +12,14 @@ export default function AppLayout() {
           headerTitleAlign: "center",
           headerTitleStyle: { fontFamily: "Outfit" },
           drawerStyle: { width: "50%" },
-          headerRight: () => <CustomThemeToggle />,
           headerLeft: () => (
             <Button
               onPress={() => navigation.toggleDrawer()}
               className="active:opacity-30 bg-transparent"
             >
-              <Menu
-                className="text-foreground"
-                style={{ width: 25, height: 25 }}
-              />
+              <Menu className="text-foreground" size={24} />
             </Button>
           ),
-          headerRightContainerStyle: {
-            paddingRight: 20,
-          },
         })}
       >
         <Drawer.Screen

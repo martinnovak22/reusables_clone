@@ -1,10 +1,13 @@
-import { ImageStyle, StyleProp, View } from "react-native";
+import { ImageStyle, Pressable, StyleProp, View } from "react-native";
 import { Text } from "components/ui/text";
 import { Card } from "~/components/ui/card";
 import { ArrowLeft } from "~/lib/icons/ArrowLeft";
 import { Button } from "~/components/ui/button";
 import { router } from "expo-router";
 import { Avatar, AvatarImage, AvatarFallback } from "~/components/ui/avatar";
+import { Power } from "~/lib/icons/Power";
+import { cn } from "~/lib/utils";
+import * as React from "react";
 
 export default function IndexScreen() {
   return (
@@ -46,6 +49,25 @@ export default function IndexScreen() {
           <Text className={"font-Outfit"}>IT, coding in Argo22</Text>
         </View>
       </Card>
+
+      <Pressable
+        onPress={() => router.navigate("/")}
+        className="web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2"
+      >
+        {({ pressed }) => (
+          <View
+            className={cn(
+              "aspect-square justify-center bg-secondary/30 p-3 rounded-2xl",
+              pressed && "opacity-70",
+            )}
+          >
+            <Power
+              className="text-foreground"
+              style={{ width: 25, height: 25 }}
+            />
+          </View>
+        )}
+      </Pressable>
     </View>
   );
 }
